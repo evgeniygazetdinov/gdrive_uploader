@@ -8,3 +8,19 @@ Text Domain:for site display
 body{
     background-color: red;
 }
+.main-container-menu,.main-menu{
+    display: flex;
+    width: 100%;
+    background-color: white;
+
+}
+.main-menu{
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    width: inherit;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.right-half,.left-half{
+    width: 100%;
+}

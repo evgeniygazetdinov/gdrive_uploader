@@ -10,6 +10,7 @@ function theme_name_scripts() {
 };   
 // =============================================================
 
+// &&&&&&&&&&&&&&&&&&&&&&&&&&&&& menu-staff &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 function register_my_menus() {
     register_nav_menus(
       array(
@@ -19,5 +20,11 @@ function register_my_menus() {
     );
   }
   add_action( 'init', 'register_my_menus' );
+
+
+  //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+ //REGISTER PORTFILIOTYPE
+
+
  ?>
     
