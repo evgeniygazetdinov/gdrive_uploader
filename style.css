@@ -3,24 +3,71 @@ Theme Name:FFlanging
 Text Domain:for site display
 */
 
-
-
-body{
-    background-color: red;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
-.main-container-menu,.main-menu{
-    display: flex;
+nav {
+    background: #00afec;
     width: 100%;
-    background-color: white;
+    
+    display: table;
+    table-layout: fixed;
+}
+    ul {
+      margin: 0;
+      padding: 0;
+  
+      display: flex;
+      flex-direction: column;
+    }
+      li {
+        list-style: none;
+        text-align: center;
+  
+        order: 1;
+        flex-grow: 1;
+      }
+        span {
+          display: block;
+          color: #fff;
+          padding: 10px 0;
+        }
+        
+        span:nth-child(1)
+        {
+          order: 6;
+        }
+        
+        span:nth-child(6)
+        {
+          order: 0;
+        }
+        button.hide_menu{
+            display: none;
+        }
+  
+  
+        @media only screen and (min-width: 600px) {
 
-}
-.main-menu{
-    justify-content: space-between;
-    font-family: Arial, Helvetica, sans-serif;
-    width: inherit;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.right-half,.left-half{
-    width: 100%;
-}
+      body{
+          background-color: #00afec;
+      }
+      ul {
+        flex-direction: column;
+        }
+        li {
+          order: 0;
+        }
+        button.hide_menu{
+        display: block;
+        background: url('assets/img/but.png');
+        width: 100px;
+        height: 100px;
+        border: none;
+        }
+        h1.logo{
+            display: none;
+        }
+    }

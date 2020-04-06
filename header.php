@@ -4,12 +4,12 @@
 </head>
 <header>
 	<div class=main-container-menu>
-		<div class="left-half">
-			
-		</div>
-		<div class="right-half">
-			<ul class="main-menu">
-				<?php wp_nav_menu( [
+	<header id="header" role="heading">
+	<button class="hide_menu"></button>
+	<nav class="resp-nav-bar">
+	
+			<h1 class="logo">FishFish</h1>
+			<ul><?php wp_nav_menu( [
 					'theme_location'  => '',
 					'menu'            => '', 
 					'container'       => 'ul', 
@@ -28,7 +28,11 @@
 					'walker'          => '',
 				] );; ?>
 			</ul>
-		</div>
-	</div>
-</header>
+			
+	</nav>
+
+
+	<!--/Nav-->
+</header>	
+				
 <body>
