@@ -35,7 +35,7 @@ function register_my_menus() {
  //REGISTER PORTFILIOTYPE
 
  add_action( 'init', 'true_register_post_type_init' ); // Использовать функцию только внутри хука init
- 
+
  function true_register_post_type_init() {
    $labels = array(
      'name' => 'Портфолио',
@@ -62,6 +62,45 @@ function register_my_menus() {
    );
    register_post_type('portfolio', $args);
  }
+ 
+//hook into the init action and call create_topics_nonhierarchical_taxonomy when it fires
+ 
+add_action( 'init', 'create_topics_nonhierarchical_taxonomy', 0 );
+ 
+function create_topics_nonhierarchical_taxonomy() {
+ 
+// Labels part for the GUI
+ 
+  $labels = array(
+    'name' => _x( 'Design', 'taxonomy general name' ),
+    'singular_name' => _x( 'Design', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Design' ),
+    'popular_items' => __( 'Popular Design' ),
+    'all_items' => __( 'All Design' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Design' ), 
+    'update_item' => __( 'Update Design' ),
+    'add_new_item' => __( 'Add New Design' ),
+    'new_item_name' => __( 'New Design Name' ),
+    'separate_items_with_commas' => __( 'Separate Design with commas' ),
+    'add_or_remove_items' => __( 'Add or remove Design' ),
+    'choose_from_most_used' => __( 'Choose from the most used Design' ),
+    'menu_name' => __( 'Design' ),
+  ); 
+ 
+// Now register the non-hierarchical taxonomy like tag
+ 
+  register_taxonomy('Design','portfolio',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+  ));
+}
+
 
  ?>
     
