@@ -1,11 +1,23 @@
-console.log('hi');
+
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%handle push proposal butn%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 $(document).ready(function() {
     $(".ff-btn-app").click(function(){
-        alert("button");
+      let data = {
+        action: 'proposal_ajax_send',
+        phone: $('input[name=phone]').val()
+      };
+      // get all from php/js values
+      //connect to php admin url
+      $.post(window.wp.ajax_url, data,  function(response){
+
+      console.log(response);},'json');
     }); 
 });
 
-$(function() {
+
+// #########################################menu hide###################################################
+/*$(function() {
     var menuVisible = false;
     $('.hide_menu').click(function() {
       if (menuVisible) {
@@ -23,4 +35,26 @@ $(function() {
       
       menuVisible = false;
     });
-  });
+  });*/
+  // ############################################################################################
+  $(function(){
+	
+    var $links = $('.scroll-menu a');
+  
+      $links.on('click', function(e){
+          e.preventDefault();
+          
+          var link = $(this);
+          var $target = $(link.attr('href'));
+          
+      if($target.length > 0){
+        $('html, body').animate({
+          scrollTop: $target.offset().top
+        }, 1000);
+      }
+          
+      })});
+
+
+
+      

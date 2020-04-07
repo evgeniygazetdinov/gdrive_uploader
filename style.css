@@ -25,10 +25,18 @@ nav {
       li {
         list-style: none;
         text-align: center;
-  
-        order: 1;
-        flex-grow: 1;
-      }
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #f4f4f4;
+
+      order: 1;
+      flex-grow: 1;
+    }
+
+    li a:hover {
+  color: black;
+    }
+      
         span {
           display: block;
           color: #fff;
