@@ -104,8 +104,8 @@ function register_proposal_type_init() {
 // 
 // word from js
 /* 
-  wp_ajax_send[proposal_ajax_send]
-  wp_ajax_unreg_send[proposal_ajax_send]
+  wp_ajax_send_[proposal_ajax_send]
+  wp_ajax_nopriv_send_[proposal_ajax_send]
 
 */
 function ff_landing_js_vars()
@@ -116,12 +116,12 @@ function ff_landing_js_vars()
     echo "<script>window.wp= ".json_encode($VARS)."</script>";
 }
 
-add_action('wp_ajax_send',"fflanding_send_ajax_from_proposal" );
-add_action('wp_ajax_unreg_send','fflanding_send_ajax_from_proposal');
+add_action('wp_ajax_proposal_ajax_send',"fflanding_send_ajax_from_proposal" );
+add_action('wp_ajax_nopriv_proposal_ajax_send','fflanding_send_ajax_from_proposal');
 function fflanding_send_ajax_from_proposal()
 {
+  var_dump('here');
   $date = isset($_POST['phone']) ? $_POST['phone'] : 0;
-  echo $date;
   die();
 }
 
@@ -202,5 +202,9 @@ function display_port(){
     // Reset Post Data
     wp_reset_postdata();
 }
+
+
+
+
 ?>
   
