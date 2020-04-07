@@ -12,7 +12,6 @@
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 // add_action('wp_print_styles', 'theme_name_scripts'); // можно использовать этот хук он более поздний
 function theme_name_scripts() {
-    	wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js');
     	wp_enqueue_script('jquery_local', get_template_directory_uri() . '/assets/js/jquery-3.2.0.min.js');
       wp_enqueue_script( 'fflanding-js', get_template_directory_uri() . '/assets/js/main.js');
 	  wp_enqueue_style( 'style-name', get_stylesheet_uri() );
@@ -34,9 +33,9 @@ function register_my_menus() {
   //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
  //REGISTER PORTFILIOTYPE
 
- add_action( 'init', 'true_register_post_type_init' ); // Использовать функцию только внутри хука init
+ add_action( 'init', 'register_portfolio_type_init' ); // Использовать функцию только внутри хука init
 
- function true_register_post_type_init() {
+ function register_portfolio_type_init() {
    $labels = array(
      'name' => 'Портфолио',
      'singular_name' => 'Портфолио', // админ панель Добавить->Функцию
@@ -56,7 +55,7 @@ function register_my_menus() {
      'public' => true,
      'show_ui' => true, // показывать интерфейс в админке
      'has_archive' => true, 
-     'menu_icon' => get_stylesheet_directory_uri() .'/assets/img/portfolio.png', // иконка в меню
+     'menu_icon' => get_stylesheet_directory_uri() .'/assets/img/portfolio.svg', // иконка в меню
      'menu_position' => 20, // порядок в меню
      'supports' => array( 'title', 'editor', 'thumbnail')
    );
@@ -64,7 +63,72 @@ function register_my_menus() {
  }
  
 //hook into the init action and call create_topics_nonhierarchical_taxonomy when it fires
- 
+
+add_action( 'init', 'register_proposal_type_init' ); // Использовать функцию только внутри хука init
+
+function register_proposal_type_init() {
+  $labels = array(
+    'name' => 'proposal',
+    'singular_name' => 'proposal', // админ панель Добавить->Функцию
+    'add_new' => 'add proposal',
+    'add_new_item' => 'add new proposal', // заголовок тега <title>
+    'edit_item' => 'edit proposal',
+    'new_item' => 'new proposal',
+    'all_items' => 'all proposal',
+    'view_item' => 'view proposal on site',
+    'search_items' => 'search proposal',
+    'not_found' =>  'proposal not found.',
+    'not_found_in_trash' => 'in trash doesnt proposal.',
+    'menu_name' => 'proposal' // ссылка в меню в админке
+  );
+  $args = array(
+    'labels' => $labels,
+    'public' => true,
+    'show_ui' => true, // показывать интерфейс в админке
+    'has_archive' => true, 
+    'menu_icon' => get_stylesheet_directory_uri() .'/assets/img/proposal.svg', // иконка в меню
+    'menu_position' => 20, // порядок в меню
+    'supports' => array( 'title', 'editor', 'thumbnail')
+  );
+  register_post_type('proposal', $args);
+}
+
+
+
+
+
+
+  //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+// ajax shit
+// 
+// word from js
+/* 
+  wp_ajax_send[proposal_ajax_send]
+  wp_ajax_unreg_send[proposal_ajax_send]
+
+*/
+function ff_landing_js_vars()
+{
+  $VARS = array(
+      'ajax_url' =>admin_url('admin-ajax.php') ,
+  );
+    echo "<script>window.wp= ".json_encode($VARS)."</script>";
+}
+
+add_action('wp_ajax_send',"fflanding_send_ajax_from_proposal" );
+add_action('wp_ajax_unreg_send','fflanding_send_ajax_from_proposal');
+function fflanding_send_ajax_from_proposal()
+{
+  $date = isset($_POST['phone']) ? $_POST['phone'] : 0;
+  echo $date;
+  die();
+}
+
+
+
+
+
 add_action( 'init', 'create_topics_nonhierarchical_taxonomy', 0 );
  
 function create_topics_nonhierarchical_taxonomy() {
@@ -101,6 +165,42 @@ function create_topics_nonhierarchical_taxonomy() {
   ));
 }
 
+	
+	function get_all_portfolio(){
+		$args = array(
+			'orderby'     => 'date',
+			'order'       => 'DESC',
+        'post_type'   => 'portfolio'
+		);
 
- ?>
-    
+		return get_posts($args);
+  }
+function display_port(){
+    $args = array(
+        'post_type' => 'portfolio',
+        'posts_per_page' => 5
+        // Several more arguments could go here. Last one without a comma.
+    );
+
+    // Query the posts:
+    $obituary_query = new WP_Query($args);
+
+    // Loop through the obituaries:
+    while ($obituary_query->have_posts()) : $obituary_query->the_post();
+        // Echo some markup
+        echo '<p>';
+        // As with regular posts, you can use all normal display functions, such as
+        the_title();
+        // Within the loop, you can access custom fields like so:
+        echo get_post_meta($post->ID, 'birth_date', true); 
+        // Or like so:
+        $birth_date = get_post_custom_values('birth_date');
+        echo $birth_date[0];
+        echo '</p>'; // Markup closing tags.
+    endwhile;
+
+    // Reset Post Data
+    wp_reset_postdata();
+}
+?>
+  

@@ -1,7 +1,14 @@
 <!DOCTYPE html>
+<html>
+<!-- variable to js -->
+<?php ff_landing_js_vars();?>
 <head>
-<?php wp_head(); wp_enqueue_scripts();?>
+<?php wp_head(); 
+wp_enqueue_scripts();
+?>
+
 </head>
+<body>
 <header>
 	<div class=main-container-menu>
 	<header id="header" role="heading">
@@ -23,7 +30,7 @@
 					'after'           => '',
 					'link_before'     => '',
 					'link_after'      => '',
-					'items_wrap'      => '%3$s',
+					'items_wrap'      => '<ul class="scroll-menu">%3$s</ul>',
 					'depth'           => 0,
 					'walker'          => '',
 				] );; ?>
@@ -35,4 +42,6 @@
 	<!--/Nav-->
 </header>	
 				
-<body>
+
+
+
