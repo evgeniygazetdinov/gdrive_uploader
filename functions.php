@@ -1,18 +1,11 @@
 <?php
-//to js from php 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-
-
-// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
 
 
 // =============style-connect================================================
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 // add_action('wp_print_styles', 'theme_name_scripts'); // можно использовать этот хук он более поздний
 function theme_name_scripts() {
-    echo get_template_directory_uri() . '/assets/js/swiper-4.5.3/dist/js/swiper.min.js';
       wp_enqueue_script('jquery_local', get_template_directory_uri() . '/assets/js/jquery-3.2.0.min.js');
       wp_enqueue_script( 'fflanding-js', get_template_directory_uri() . '/assets/js/main.js');
       
@@ -21,6 +14,7 @@ function theme_name_scripts() {
 		  wp_enqueue_style('test-owl-theme', get_template_directory_uri() . '/assets/css/owl.theme.default.min.css');
 
       wp_enqueue_script('test-script-owl', get_template_directory_uri() . '/assets/js/owl.carousel.min.js');
+
 
 	  wp_enqueue_style( 'style-name', get_stylesheet_uri() );
 };   
@@ -101,11 +95,6 @@ function register_proposal_type_init() {
   register_post_type('proposal', $args);
 }
 
-
-
-
-
-
   //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 // ajax shit
@@ -115,6 +104,7 @@ function register_proposal_type_init() {
   wp_ajax_send_[proposal_ajax_send]
   wp_ajax_nopriv_send_[proposal_ajax_send]
 
+
 */
 function ff_landing_js_vars()
 {
@@ -123,6 +113,7 @@ function ff_landing_js_vars()
   );
     echo "<script>window.wp= ".json_encode($VARS)."</script>";
 }
+
 
 add_action('wp_ajax_proposal_ajax_send',"fflanding_send_ajax_from_proposal" );
 add_action('wp_ajax_nopriv_proposal_ajax_send','fflanding_send_ajax_from_proposal');
@@ -151,9 +142,6 @@ function fflanding_send_ajax_from_proposal(){
    
  }
  
-
-
-
 
 
 add_action( 'init', 'create_topics_nonhierarchical_taxonomy', 0 );
@@ -202,7 +190,9 @@ function create_topics_nonhierarchical_taxonomy() {
 
 		return get_posts($args);
   }
+
    function display_port(){
+
     $args = array(
         'post_type' => 'portfolio',
         'posts_per_page' => 5
@@ -224,7 +214,6 @@ function create_topics_nonhierarchical_taxonomy() {
 
     // Reset Post Data
     wp_reset_postdata();
-
 
   }
 
