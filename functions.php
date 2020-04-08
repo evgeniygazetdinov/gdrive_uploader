@@ -1,11 +1,21 @@
 <?php
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 
 // =============style-connect================================================
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 // add_action('wp_print_styles', 'theme_name_scripts'); // можно использовать этот хук он более поздний
 function theme_name_scripts() {
-    	wp_enqueue_script('jquery_local', get_template_directory_uri() . '/assets/js/jquery-3.2.0.min.js');
+      wp_enqueue_script('jquery_local', get_template_directory_uri() . '/assets/js/jquery-3.2.0.min.js');
       wp_enqueue_script( 'fflanding-js', get_template_directory_uri() . '/assets/js/main.js');
+      
+    
+      wp_enqueue_style('test-owl', get_template_directory_uri() . '/assets/css/owl.carousel.min.css');
+		  wp_enqueue_style('test-owl-theme', get_template_directory_uri() . '/assets/css/owl.theme.default.min.css');
+
+      wp_enqueue_script('test-script-owl', get_template_directory_uri() . '/assets/js/owl.carousel.min.js');
+
+
 	  wp_enqueue_style( 'style-name', get_stylesheet_uri() );
 };   
 // =============================================================
@@ -85,19 +95,15 @@ function register_proposal_type_init() {
   register_post_type('proposal', $args);
 }
 
-
-
-
-
-
   //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 // ajax shit
 // 
 // word from js
 /* 
-  wp_ajax_send[proposal_ajax_send]
-  wp_ajax_unreg_send[proposal_ajax_send]
+  wp_ajax_send_[proposal_ajax_send]
+  wp_ajax_nopriv_send_[proposal_ajax_send]
+
 
 */
 function ff_landing_js_vars()
@@ -108,17 +114,34 @@ function ff_landing_js_vars()
     echo "<script>window.wp= ".json_encode($VARS)."</script>";
 }
 
-add_action('wp_ajax_send',"fflanding_send_ajax_from_proposal" );
-add_action('wp_ajax_unreg_send','fflanding_send_ajax_from_proposal');
-function fflanding_send_ajax_from_proposal()
-{
-  $date = isset($_POST['phone']) ? $_POST['phone'] : 0;
-  echo $date;
-  die();
-}
 
-
-
+add_action('wp_ajax_proposal_ajax_send',"fflanding_send_ajax_from_proposal" );
+add_action('wp_ajax_nopriv_proposal_ajax_send','fflanding_send_ajax_from_proposal');
+// validate phone
+function validating($phone){
+  if(preg_match('/^[0-9]{11}+$/', $phone)) {
+        return true;
+  }
+  return false;
+ }
+function fflanding_send_ajax_from_proposal(){
+  #check_phone
+  $phone = htmlspecialchars($_POST['phone']) ;
+  if(validating($phone)){
+    $data = [
+      'post_type'=>'proposal',
+      'post_title'=> $phone,
+    ];
+     wp_insert_post($data);
+     var_dump("Ok");
+    die();
+    
+   }
+   var_dump('None');
+   die();
+   
+ }
+ 
 
 
 add_action( 'init', 'create_topics_nonhierarchical_taxonomy', 0 );
@@ -167,7 +190,9 @@ function create_topics_nonhierarchical_taxonomy() {
 
 		return get_posts($args);
   }
-function display_port(){
+
+   function display_port(){
+
     $args = array(
         'post_type' => 'portfolio',
         'posts_per_page' => 5
@@ -180,19 +205,17 @@ function display_port(){
     // Loop through the obituaries:
     while ($obituary_query->have_posts()) : $obituary_query->the_post();
         // Echo some markup
-        echo '<p>';
+        echo '<div class="swiper-slide">';
         // As with regular posts, you can use all normal display functions, such as
         the_title();
         // Within the loop, you can access custom fields like so:
-        echo get_post_meta($post->ID, 'birth_date', true); 
-        // Or like so:
-        $birth_date = get_post_custom_values('birth_date');
-        echo $birth_date[0];
-        echo '</p>'; // Markup closing tags.
+        echo '</div>'; // Markup closing tags.
     endwhile;
 
     // Reset Post Data
     wp_reset_postdata();
-}
+
+  }
+
 ?>
   

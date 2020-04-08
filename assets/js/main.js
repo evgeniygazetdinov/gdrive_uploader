@@ -9,6 +9,7 @@ $(document).ready(function() {
       };
       // get all from php/js values
       //connect to php admin url
+      console.log(window.wp.ajax_url);
       $.post(window.wp.ajax_url, data,  function(response){
 
       console.log(response);},'json');
@@ -17,7 +18,7 @@ $(document).ready(function() {
 
 
 // #########################################menu hide###################################################
-/*$(function() {
+$(function() {
     var menuVisible = false;
     $('.hide_menu').click(function() {
       if (menuVisible) {
@@ -35,7 +36,7 @@ $(document).ready(function() {
       
       menuVisible = false;
     });
-  });*/
+  });
   // ############################################################################################
   $(function(){
 	
@@ -55,6 +56,11 @@ $(document).ready(function() {
           
       })});
 
-
-
-      
+      window.onload = function () {
+        //initialize swiper when document ready
+        var mySwiper = new Swiper ('.swiper-container', {
+          // Optional parameters
+          direction: 'horizontal',
+          loop: true
+        })
+      };

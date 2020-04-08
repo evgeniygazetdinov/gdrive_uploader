@@ -1,10 +1,13 @@
  
  <?php get_header() ?>
  <div class="portfolio">
-     portfolio
-     
+     portfolio     
      <section id="portfolio">
-     <?php display_port()?>
+        <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+            <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1964px, 0px, 0px);">                
+            <?php display_port()?>
+            </div>
+        </div>
      </section>
  </div>
  <p></p>
