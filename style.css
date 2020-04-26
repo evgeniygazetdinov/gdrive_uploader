@@ -2,7 +2,8 @@
 Theme Name:FFlanging
 Text Domain:for site display
 */
-
+@font-face { font-family: Chava; src: url('assets/fonts/Chava-Regular.otf'); }
+@font-face { font-family: IBM Plex Mono; src: url('assets/fonts/IBMPlexMono-Bold.ttf'); }
 * {
     box-sizing: border-box;
     padding: 0;
@@ -10,23 +11,26 @@ Text Domain:for site display
 }
 body{
   background-color: #1B262C;
+  width: 1440px;
+  height: 4653px;
 }
 .header{
   display: flex;
   width: 100%;
 }
-.right-header,.left-header{
+.right-header{
   width: 50%;
-  background-color: red;
+  display: flex;
 }
 .left-header{
-  background-color: blue;
+  width: 50%;
 }
 .main-table{
   display:flex;
   width: 100%;
   list-style-type: none;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .menu-item{
   padding:30px;
@@ -34,4 +38,46 @@ body{
 }
 .menu-item a{
 text-decoration: none;
+font-family: IBM Plex Mono;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 130%;
+color: #FDA274;
+}
+.bottom-header-left{
+  display: flex;
+width: 50%;
+}
+
+h1.main-title{
+  font-family: Chava;
+font-style: normal;
+font-weight: normal;
+font-size: 72px;
+line-height: 100%;
+}
+.bottom-header{
+  display: flex;
+}
+.bottom-bottom-header{
+  display: flex;
+
+align-items: center;
+
+justify-content: center;
+}
+.yellow-color{
+  color: #FDA274;
+}
+.standart-font{
+  font-family: IBM Plex Mono;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 130%;
+}
+.main-fish{
+  width: 100px;
+height: 100px;
 }
