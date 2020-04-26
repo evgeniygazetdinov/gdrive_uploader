@@ -12,16 +12,8 @@
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 // add_action('wp_print_styles', 'theme_name_scripts'); // можно использовать этот хук он более поздний
 function theme_name_scripts() {
-    echo get_template_directory_uri() . '/assets/js/swiper-4.5.3/dist/js/swiper.min.js';
       wp_enqueue_script('jquery_local', get_template_directory_uri() . '/assets/js/jquery-3.2.0.min.js');
       wp_enqueue_script( 'fflanding-js', get_template_directory_uri() . '/assets/js/main.js');
-      
-    
-      wp_enqueue_style('test-owl', get_template_directory_uri() . '/assets/css/owl.carousel.min.css');
-		  wp_enqueue_style('test-owl-theme', get_template_directory_uri() . '/assets/css/owl.theme.default.min.css');
-
-      wp_enqueue_script('test-script-owl', get_template_directory_uri() . '/assets/js/owl.carousel.min.js');
-
 	  wp_enqueue_style( 'style-name', get_stylesheet_uri() );
 };   
 // =============================================================
