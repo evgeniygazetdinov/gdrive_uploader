@@ -4,37 +4,8 @@ Text Domain:for site display
 */
 @font-face { font-family: Chava; src: url('assets/fonts/Chava-Regular.otf'); }
 @font-face { font-family: IBM Plex Mono; src: url('assets/fonts/IBMPlexMono-Bold.ttf'); }
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-body{
-  background-color: #1B262C;
-  width: 1440px;
-  height: 4653px;
-}
-.header{
-  display: flex;
-  width: 100%;
-}
-.right-header{
-  width: 50%;
-  display: flex;
-}
-.left-header{
-  width: 50%;
-}
-.main-table{
-  display:flex;
-  width: 100%;
-  list-style-type: none;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.menu-item{
-  padding:30px;
-
+.yellow-color{
+  color: #FDA274;
 }
 .menu-item a{
 text-decoration: none;
@@ -45,11 +16,13 @@ font-size: 18px;
 line-height: 130%;
 color: #FDA274;
 }
-.bottom-header-left{
-  display: flex;
-width: 50%;
+.standart-font{
+  font-family: IBM Plex Mono;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 130%;
 }
-
 h1.main-title{
   font-family: Chava;
 font-style: normal;
@@ -57,8 +30,45 @@ font-weight: normal;
 font-size: 72px;
 line-height: 100%;
 }
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+  width: 1110px;
+  background-color: #1B262C;
+}
+.main-container-menu{
+  position: absolute;
+left: 60px;
+top: 50%;
+top: 40px;
+right: 94px;
+}
+.true-header{
+  display: flex;
+width: 100%;
+}
+.main-table{
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+
+}
+.left-header{
+  width: 20%;
+}
+.right-header{
+  width: 80%;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+}
 .bottom-header{
   display: flex;
+  margin-left: 100px;
+margin-top: 141px;
 }
 .bottom-bottom-header{
   display: flex;
@@ -67,17 +77,47 @@ align-items: center;
 
 justify-content: center;
 }
-.yellow-color{
-  color: #FDA274;
+.bottom-header-left{
+  width: 70%;
 }
-.standart-font{
-  font-family: IBM Plex Mono;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 130%;
+.bottom-header-right{
+  align-content: center;
+  align-items: center;
+  display: flex;
+  width: 14%;
+  margin: 80px;
 }
+li a{
+  margin: 30px;
+}
+/*
+.right-header{
+  width: 50%;
+  display: flex;
+}
+.main-table{
+  display: flex;
+
+  align-items: center;
+}
+.menu-item{
+  padding:30px;
+
+}
+
+.bottom-header-left{
+  display: flex;
+width: 50%;
+}
+
+
+.bottom-header{
+  display: flex;
+}
+
+
 .main-fish{
   width: 100px;
 height: 100px;
 }
+*/
