@@ -58,6 +58,6 @@ wp_enqueue_scripts();
 
 			</div>
 			<div class="bottom-bottom-header">
-				<p class="not-main-p yellow-color standart-font">Адепты честности в мире бизнеса и IT.</p>
+				<p class="not-main-p yellow-color standart-font title-size">Адепты честности в мире бизнеса и IT.</p>
 			</div>
 			</div>
