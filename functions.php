@@ -1,23 +1,25 @@
 <?php
+//to js from php
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 
 
 // =============style-connect================================================
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 // add_action('wp_print_styles', 'theme_name_scripts'); // можно использовать этот хук он более поздний
 function theme_name_scripts() {
+
       wp_enqueue_script('jquery_local', get_template_directory_uri() . '/assets/js/jquery-3.2.0.min.js');
       wp_enqueue_script( 'fflanding-js', get_template_directory_uri() . '/assets/js/main.js');
-      
-    
-      wp_enqueue_style('test-owl', get_template_directory_uri() . '/assets/css/owl.carousel.min.css');
-		  wp_enqueue_style('test-owl-theme', get_template_directory_uri() . '/assets/css/owl.theme.default.min.css');
+      wp_enqueue_style('child-theme', get_stylesheet_directory_uri() .'/assets/styles/body.css');
+      wp_enqueue_style('second-child-theme', get_stylesheet_directory_uri() .'/assets/styles/header.css');
+	    wp_enqueue_style( 'style-name', get_stylesheet_uri() );
 
-      wp_enqueue_script('test-script-owl', get_template_directory_uri() . '/assets/js/owl.carousel.min.js');
-
-
-	  wp_enqueue_style( 'style-name', get_stylesheet_uri() );
-};   
+};
 // =============================================================
 
 // &&&&&&&&&&&&&&&&&&&&&&&&&&&&& menu-staff &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -25,7 +27,7 @@ function register_my_menus() {
     register_nav_menus(
       array(
         'new-menu' => __( 'FFlanding_menu' ),
-   
+
       )
     );
   }
@@ -56,14 +58,14 @@ function register_my_menus() {
      'labels' => $labels,
      'public' => true,
      'show_ui' => true, // показывать интерфейс в админке
-     'has_archive' => true, 
+     'has_archive' => true,
      'menu_icon' => get_stylesheet_directory_uri() .'/assets/img/portfolio.svg', // иконка в меню
      'menu_position' => 20, // порядок в меню
      'supports' => array( 'title', 'editor', 'thumbnail')
    );
    register_post_type('portfolio', $args);
  }
- 
+
 //hook into the init action and call create_topics_nonhierarchical_taxonomy when it fires
 
 add_action( 'init', 'register_proposal_type_init' ); // Использовать функцию только внутри хука init
@@ -87,7 +89,7 @@ function register_proposal_type_init() {
     'labels' => $labels,
     'public' => true,
     'show_ui' => true, // показывать интерфейс в админке
-    'has_archive' => true, 
+    'has_archive' => true,
     'menu_icon' => get_stylesheet_directory_uri() .'/assets/img/proposal.svg', // иконка в меню
     'menu_position' => 20, // порядок в меню
     'supports' => array( 'title', 'editor', 'thumbnail')
@@ -95,15 +97,19 @@ function register_proposal_type_init() {
   register_post_type('proposal', $args);
 }
 
+
+
+
+
+
   //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 // ajax shit
-// 
+//
 // word from js
-/* 
+/*
   wp_ajax_send_[proposal_ajax_send]
   wp_ajax_nopriv_send_[proposal_ajax_send]
-
 
 */
 function ff_landing_js_vars()
@@ -113,7 +119,6 @@ function ff_landing_js_vars()
   );
     echo "<script>window.wp= ".json_encode($VARS)."</script>";
 }
-
 
 add_action('wp_ajax_proposal_ajax_send',"fflanding_send_ajax_from_proposal" );
 add_action('wp_ajax_nopriv_proposal_ajax_send','fflanding_send_ajax_from_proposal');
@@ -135,21 +140,24 @@ function fflanding_send_ajax_from_proposal(){
      wp_insert_post($data);
      var_dump("Ok");
     die();
-    
+
    }
    var_dump('None');
    die();
-   
+
  }
- 
+
+
+
+
 
 
 add_action( 'init', 'create_topics_nonhierarchical_taxonomy', 0 );
- 
+
 function create_topics_nonhierarchical_taxonomy() {
- 
+
 // Labels part for the GUI
- 
+
   $labels = array(
     'name' => _x( 'Design', 'taxonomy general name' ),
     'singular_name' => _x( 'Design', 'taxonomy singular name' ),
@@ -158,7 +166,7 @@ function create_topics_nonhierarchical_taxonomy() {
     'all_items' => __( 'All Design' ),
     'parent_item' => null,
     'parent_item_colon' => null,
-    'edit_item' => __( 'Edit Design' ), 
+    'edit_item' => __( 'Edit Design' ),
     'update_item' => __( 'Update Design' ),
     'add_new_item' => __( 'Add New Design' ),
     'new_item_name' => __( 'New Design Name' ),
@@ -166,10 +174,10 @@ function create_topics_nonhierarchical_taxonomy() {
     'add_or_remove_items' => __( 'Add or remove Design' ),
     'choose_from_most_used' => __( 'Choose from the most used Design' ),
     'menu_name' => __( 'Design' ),
-  ); 
- 
+  );
+
 // Now register the non-hierarchical taxonomy like tag
- 
+
   register_taxonomy('Design','portfolio',array(
     'hierarchical' => false,
     'labels' => $labels,
@@ -180,7 +188,7 @@ function create_topics_nonhierarchical_taxonomy() {
   ));
 }
 
-	
+
 	function get_all_portfolio(){
 		$args = array(
 			'orderby'     => 'date',
@@ -190,9 +198,7 @@ function create_topics_nonhierarchical_taxonomy() {
 
 		return get_posts($args);
   }
-
    function display_port(){
-
     $args = array(
         'post_type' => 'portfolio',
         'posts_per_page' => 5
@@ -215,7 +221,7 @@ function create_topics_nonhierarchical_taxonomy() {
     // Reset Post Data
     wp_reset_postdata();
 
+
   }
 
 ?>
-  

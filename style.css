@@ -3,85 +3,10 @@ Theme Name:FFlanging
 Text Domain:for site display
 */
 
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-nav {
-    background: #00afec;
-    width: 100%;
-    
-    display: table;
-    table-layout: fixed;
-}
-    ul {
-      margin: 0;
-      padding: 0;
-  
-      display: flex;
-      flex-direction: column;
-    }
-      li {
-        list-style: none;
-        text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      color: #f4f4f4;
 
-      order: 1;
-      flex-grow: 1;
-    }
+/* #########################header##################### */
 
-    .swiper-container {
-    width: 600px;
-    height: 300px;
-}
+@font-face { font-family: Chava; src: url('assets/fonts/Chava-Regular.otf'); }
+@font-face { font-family: IBM Plex Mono; src: url('assets/fonts/IBMPlexMono-Bold.ttf'); }
 
-
-    li a:hover {
-  color: black;
-    }
-      
-        span {
-          display: block;
-          color: #fff;
-          padding: 10px 0;
-        }
-        
-        span:nth-child(1)
-        {
-          order: 6;
-        }
-        
-        span:nth-child(6)
-        {
-          order: 0;
-        }
-        button.hide_menu{
-            display: none;
-        }
-  
-  
-        @media only screen and (min-width: 600px) {
-
-      body{
-          background-color: #00afec;
-      }
-      ul {
-        flex-direction: column;
-        }
-        li {
-          order: 0;
-        }
-        button.hide_menu{
-        display: block;
-        background: url('assets/img/but.png');
-        width: 100px;
-        height: 100px;
-        border: none;
-        }
-        h1.logo{
-            display: none;
-        }
-    }
+/* ###################################body######################################*/
