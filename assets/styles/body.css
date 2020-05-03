@@ -1,7 +1,7 @@
 .body-container{
   margin-left: 100px;
 }
-#about{
+#about,#services{
   display: flex
 }
 .section-text{
@@ -22,8 +22,23 @@ width: 100%;
   margin-bottom: 30px;
 }
 .section-image{
-  width: 30%;
-  margin-left: 100px;
-margin-top: 80px;
+  width: 45%;
+  margin-left: 65px;
+  margin-top: 80px;
 
+}
+.services{
+  margin-top:301px;
+}
+.under-text{
+  margin-left: 25px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+.menu-accord{
+  margin:5px;
+}
+.under-under li{
+   background: url("/assets/img/dot.png") no-repeat left 5px;
+    padding-left: 1em;
 }
