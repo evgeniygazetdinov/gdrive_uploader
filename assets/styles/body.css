@@ -1,8 +1,9 @@
 .body-container{
   margin-left: 100px;
 }
-#about,#services{
-  display: flex
+#about,#services,#cases,#contacts{
+  display: flex;
+  scroll-margin: 150px 0 0 50px;
 }
 .section-text{
   font-size: 18px;
@@ -25,10 +26,15 @@ width: 100%;
   width: 45%;
   margin-left: 65px;
   margin-top: 80px;
-
 }
-.services{
+.image-contacts{
+  margin-top: 0;
+}
+.services,.contacts{
   margin-top:301px;
+}
+.contacts{
+  margin-bottom: 150px;
 }
 .under-text{
   margin-left: 25px;
@@ -37,4 +43,27 @@ margin-bottom: 10px;
 }
 .menu-accord{
   margin:5px;
+}
+tbody{
+  display:flex;
+}
+table tr{
+  display: flex;
+justify-content: space-between;
+align-content: center;
+flex-direction: column;
+}
+tr.left-side,tr.right-side{
+  align-items: start;
+}
+tr.left-side{
+  font-family: Chava;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 100%;
+  margin-right: 17px;
+}
+th a{
+  color: #FDA274;
 }

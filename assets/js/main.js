@@ -13,7 +13,7 @@ $(document).ready(function() {
       $.post(window.wp.ajax_url, data,  function(response){
 
       console.log(response);},'json');
-    }); 
+    });
 });
 
 
@@ -23,7 +23,7 @@ $(function() {
     $('.hide_menu').click(function() {
       if (menuVisible) {
         $('.resp-nav-bar').css({'display':'none'});
-        
+
         menuVisible = false;
 
         return;
@@ -33,27 +33,27 @@ $(function() {
     });
     $('.resp-nav-bar').click(function() {
       $(this).css({'display':'none'});
-      
+
       menuVisible = false;
     });
   });
   // ############################################################################################
   $(function(){
-	
+
     var $links = $('.scroll-menu a');
-  
+
       $links.on('click', function(e){
           e.preventDefault();
-          
+
           var link = $(this);
           var $target = $(link.attr('href'));
-          
+
       if($target.length > 0){
         $('html, body').animate({
           scrollTop: $target.offset().top
-        }, 1000);
+        }, 100);
       }
-          
+
       })});
 
       window.onload = function () {
