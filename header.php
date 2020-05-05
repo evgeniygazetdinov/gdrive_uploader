@@ -13,7 +13,7 @@ wp_enqueue_scripts();
 ?>
 
 </head>
-<body>
+<body style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/place.png')">
 <header>
 	<div class=main-container-menu>
 		<div class="header">

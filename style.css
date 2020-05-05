@@ -10,3 +10,10 @@ Text Domain:for site display
 @font-face { font-family: IBM Plex Mono; src: url('assets/fonts/IBMPlexMono-Bold.ttf'); }
 
 /* ###################################body######################################*/
+img{
+  max-width: 60%;
+  height: auto;
+}
+html {
+  scroll-behavior: smooth;
+}
