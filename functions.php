@@ -13,11 +13,8 @@ add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 // add_action('wp_print_styles', 'theme_name_scripts'); // можно использовать этот хук он более поздний
 function theme_name_scripts() {
 
-      wp_enqueue_script('jquery_local', get_template_directory_uri() . '/assets/js/jquery-3.2.0.min.js');
-      wp_enqueue_script( 'fflanding-js', get_template_directory_uri() . '/assets/js/main.js');
-      wp_enqueue_style('child-theme', get_stylesheet_directory_uri() .'/assets/styles/body.css');
-      wp_enqueue_style('second-child-theme', get_stylesheet_directory_uri() .'/assets/styles/header.css');
-	    wp_enqueue_style( 'style-name', get_stylesheet_uri() );
+      wp_enqueue_script( 'fflanding-js', get_template_directory_uri() . '/assets/build/js/script.js');
+      wp_enqueue_style('second-child-theme', get_stylesheet_directory_uri() .'/assets/build/css/style.css');
 
 };
 // =============================================================
