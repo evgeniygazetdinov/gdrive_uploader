@@ -1,0 +1,91 @@
+.yellow-color{
+  color: #FDA274;
+}
+.menu-item a{
+text-decoration: none;
+font-family: IBM Plex Mono;
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 130%;
+color: #FDA274;
+}
+.standart-font{
+  font-family: IBM Plex Mono;
+font-style: normal;
+font-weight: normal;
+}
+
+.title-size{
+  font-size: 24px;
+line-height: 130%;
+
+}
+h1.main-title{
+  font-family: Chava;
+font-style: normal;
+font-weight: normal;
+font-size: 72px;
+line-height: 100%;
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+  width: 1110px;
+  background-color: #1B262C;
+}
+.main-container-menu{
+  position: absolute;
+left: 60px;
+top: 50%;
+top: 40px;
+right: 94px;
+}
+.true-header{
+  display: flex;
+width: 100%;
+}
+.main-table{
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+
+}
+.left-header{
+  width: 20%;
+}
+.right-header{
+  width: 80%;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+}
+.bottom-header{
+  display: flex;
+  margin-left: 100px;
+margin-top: 141px;
+}
+.bottom-bottom-header{
+  display: flex;
+
+align-items: center;
+
+justify-content: center;
+margin-bottom: 375px;
+}
+.bottom-header-left{
+  width: 70%;
+}
+.bottom-header-right{
+  align-content: center;
+  align-items: center;
+  display: flex;
+  width: 14%;
+  margin: 80px;
+}
+li a{
+  margin: 30px;
+}
