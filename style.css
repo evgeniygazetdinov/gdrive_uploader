@@ -2,19 +2,3 @@
 Theme Name:FFlanging
 Text Domain:for site display
 */
-
-
-/* #########################header##################### */
-
-@font-face { font-family: Chava; src: url('assets/fonts/Chava-Regular.otf'); }
-@font-face { font-family: IBM Plex Mono; src: url('assets/fonts/IBMPlexMono-Bold.ttf'); }
-
-/* ###################################body######################################*/
-img{
-  max-width: 60%;
-  height: auto;
-}
-html {
-  scroll-behavior: smooth;
-}
-

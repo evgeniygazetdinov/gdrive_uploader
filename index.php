@@ -7,7 +7,7 @@
      </div>
     <section id="about">
         <div class=section-image>
-          	<img src="<?php echo get_template_directory_uri(); ?>/assets/img/glases.gif" alt="">
+          	<img src="<?php echo get_template_directory_uri(); ?>/assets/build/img/glases.gif" alt="">
         </div>
         <div class=" standart-font yellow-color section-text">
            <p class='section-p'>Мы молодая веб-студия. Молодая от слова совсем. У нас не так много опыта и мы активно ищем заказы, хотим развиваться и сотрудничать: хотим развиваться и сотрудничать. Мы готовы предложить следующие форматы взаимодействия</p>
@@ -39,13 +39,13 @@
               <p>Разработка сайтов “под ключ” </p>
               <p>Wordpress/Django</p>
                 <ul class="under-under">
-                  <li class="menu-accord" style="list-style-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/dot.png")"><p>CMS</p></li>
+                  <li class="menu-accord" style="list-style-image: url(<?php echo get_template_directory_uri(); ?>/assets/build/img/dot.png")"><p>CMS</p></li>
                     <div class='under-text'>
                       <p>Django CMS</p>
                       <p>Wordpress</p>
                       <p>Opencart</p>
                     </div>
-                  <li class="menu-accord"style="list-style-image: url(<?php echo get_template_directory_uri(); ?>/assets/img/dot.png")" ><p>Backend</p></li>
+                  <li class="menu-accord"style="list-style-image: url(<?php echo get_template_directory_uri(); ?>/assets/build/img/dot.png")" ><p>Backend</p></li>
                     <div class='under-text'>
                       <p>Django/Symfony</p>
                     </div>
@@ -91,7 +91,7 @@
          </div>
      <section id="contacts">
            <div class="section-image image-contacts">
-             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/explore.gif" alt="">
+             <img src="<?php echo get_template_directory_uri(); ?>/assets/build/img/explore.gif" alt="">
              <p></p>
            </div>
            <div class="standart-font yellow-color section-text">

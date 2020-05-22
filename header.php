@@ -13,7 +13,7 @@ wp_enqueue_scripts();
 ?>
 
 </head>
-<body style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/place.png')">
+<body style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/build/img/place.png')">
 <header>
 	<div class=main-container-menu>
 		<div class="header">
@@ -21,7 +21,7 @@ wp_enqueue_scripts();
 				<div class="true-header">
 					<div class="left-header">
 						<div class="main-logo">
-							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.png" alt="">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/build/img/logo.png" alt="">
 							<a href=""></a>
 						</div>
 						</div>
@@ -53,7 +53,7 @@ wp_enqueue_scripts();
 					<h1 class="main-title yellow-color">Делаем в срок Делаем ок</h1>
 				</div>
 				<div class="bottom-header-right">
-					<img src="<?php echo get_template_directory_uri(); ?>/assets/img/main-fish.png" alt="" class="main-fish">
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/build/img/main-fish.png" alt="" class="main-fish">
 				</div>
 
 			</div>
