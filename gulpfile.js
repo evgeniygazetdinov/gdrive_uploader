@@ -37,7 +37,7 @@ function watch(){
   gulp.watch('./assets/src/js/**/*.js',script);
   gulp.watch('./assets/src/fonts/*',fonts);
   gulp.watch('./assets/src/img/*',img);
-    // gulp.watch('.assets/src/*.html',browserSync.reload);
+  gulp.watch('./assets/src/').on('change',browserSync.reload);
 
   }
 
