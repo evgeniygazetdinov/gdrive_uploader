@@ -1,0 +1,6 @@
+client.json
+*.pickle
+.idea/
+env/
+flags/
+uploaded_files.json
