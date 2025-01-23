@@ -10,6 +10,25 @@ import json
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
 JSON_FILE = 'uploaded_files.json'
 
+def set_file_permissions(service, file_id):
+    try:
+        # Создаем разрешение для всех пользователей с ссылкой
+        permission = {
+            'type': 'anyone',
+            'role': 'reader',
+            'allowFileDiscovery': False
+        }
+        
+        service.permissions().create(
+            fileId=file_id,
+            body=permission,
+            fields='id'
+        ).execute()
+        
+        return True
+    except Exception as e:
+        print(f"Ошибка при установке прав доступа: {str(e)}")
+        return False
 
 def authenticate():
     creds = None
@@ -65,7 +84,12 @@ def upload_file(service, file_path, folder_id=None):
         media_body=media,
         fields='id'
     ).execute()
-    file_id =file["id"]
+    
+    file_id = file["id"]
+    
+    # Устанавливаем права доступа
+    set_file_permissions(service, file_id)
+    
     print(f'Файл {file_name} успешно загружен, ID: {file_id}')
     download_link = get_download_link(file_id)
     key = file_name.split('.')[0]
